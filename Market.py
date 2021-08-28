@@ -1,14 +1,8 @@
 from typing import List
+from dataclasses import field, dataclass
 
-from dataclasses import dataclass
-
-@dataclass
-class Order(object):
-    ID: int
-    CreatorID: int
-    Side: bool
-    Price: int
-    Quantity: int
+from Actor import Actor
+from Order import Order, OrderResult
 
 
 @dataclass
@@ -25,13 +19,21 @@ class AuctionResult(object):
     ClearingPrice: int
 
 
+
+
 @dataclass
 class Market(object):
     ID: int
-    Bids: List[Order]
-    Offers: List[Order]
-    Matches: List[Match]
+    Bids: List[Order] = field(default_factory=list)
+    Offers: List[Order] = field(default_factory=list)
+    Matches: List[Match] = field(default_factory=list)
 
+    def AddOrder(self, order: Order):
+        if order.Side:
+            self.Offers.append(order)
+        else:
+            self.Bids.append(order)
+    
     def MatchOrders(self):
         orderedBids = sorted(self.Bids, key=lambda x: x.Price)[::-1]
         orderedOffers = sorted(self.Offers, key=lambda x: x.Price)
@@ -43,11 +45,18 @@ class Market(object):
                 self.Matches.append(Match(orderedBids.pop(), orderedOffers.pop()))
             else:
                 break
+        self.Bids = orderedBids
+        self.Offers = orderedOffers
 
     def ComputeClearingPrice(self) -> int:
         clearingPrice = 0
         for match in self.Matches:
             clearingPrice += (match.Bid.Price + match.Ask.Price) / 2
+        clearingPrice /= len(self.Matches)
         return int(clearingPrice)
 
-
+    def ProcessResults(self, actorsPool: List[Actor]):
+        """
+            Process Results from auction: notify participants of results
+        """
+        pass

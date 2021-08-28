@@ -4,6 +4,10 @@ from Actor import Actor
 from JobPicker import BaseJobPicker, RandomJobPicker
 from RecipePicker import BaseRecipePicker, RandomRecipePicker
 
+
+from Order import Order
+
+
 import Settings as SETTINGS
 
 from random import randrange
@@ -42,3 +46,11 @@ class ActorFactory(object):
 
 
 
+class OrderFactory(object):
+    def __init__(self):
+        self.mCurrentID = 0
+    
+    def CreateNew(self, idCreator: int, side: bool, quantity: int, price: int) -> Order:
+        order = Order(ID=self.mCurrentID, CreatorID=idCreator, Side=side, Price=price, Quantity=quantity)
+        self.mCurrentID += 1
+        return order
