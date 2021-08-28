@@ -2,21 +2,7 @@ from typing import List
 from dataclasses import field, dataclass
 
 from Actor import Actor
-from Order import Order, OrderResult
-
-
-@dataclass
-class Match(object):
-    Bid: Order
-    Ask: Order
-
-
-@dataclass
-class AuctionResult(object):
-    Bids: List[Order]
-    Asks: List[Order]
-    Matches: List[Match]
-    ClearingPrice: int
+from Order import Order, Match, OrderResult
 
 
 
@@ -29,12 +15,18 @@ class Market(object):
     Matches: List[Match] = field(default_factory=list)
 
     def AddOrder(self, order: Order):
+        """
+            Add order to registered orders depending on Order.Side (bid or offer): is a buy if false, sell if true
+        """
         if order.Side:
             self.Offers.append(order)
         else:
             self.Bids.append(order)
     
     def MatchOrders(self):
+        """
+            Compute matches from buy and sell orders, to be used to compute clearing price. 
+        """
         orderedBids = sorted(self.Bids, key=lambda x: x.Price)[::-1]
         orderedOffers = sorted(self.Offers, key=lambda x: x.Price)
         while (True):
@@ -49,14 +41,24 @@ class Market(object):
         self.Offers = orderedOffers
 
     def ComputeClearingPrice(self) -> int:
+        """
+            Compute auction clearing price from matching orders
+        """
         clearingPrice = 0
         for match in self.Matches:
             clearingPrice += (match.Bid.Price + match.Ask.Price) / 2
         clearingPrice /= len(self.Matches)
         return int(clearingPrice)
 
-    def ProcessResults(self, actorsPool: List[Actor]):
+    def ProcessResults(self, clearingPrice: int, actorsPool: List[Actor]):
         """
             Process Results from auction: notify participants of results
         """
-        pass
+        # process matches  
+        for match in self.Matches:
+            actorsPool[match.Bid.CreatorID].NotifyOrderResult(OrderResult.FromMatchedOrder(self.ID, clearingPrice, match.Bid))
+            actorsPool[match.Bid.CreatorID].NotifyOrderResult(OrderResult.FromMatchedOrder(self.ID, clearingPrice, match.Bid))
+        for segment in [self.Bids, self.Offers]:
+            for order in segment:
+                actorsPool[order.CreatorID].NotifyOrderResult(OrderResult.FromRejectedOrder(self.ID, clearingPrice, order))
+

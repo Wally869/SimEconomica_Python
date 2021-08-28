@@ -33,6 +33,9 @@ class ActorFactory(object):
         self.mCurrentID = 0
     
     def CreateNew(self) -> Actor:
+        """
+            Create a new actor by picking a job using current JobPicker system, and recipe using RecipePicker system. Actor ID is autoincrementing.
+        """
         idJob = self.kJobPicker.PickJob()
         recipe = self.kRecipePicker.PickRecipe(jobID=idJob)
         newActor = Actor(self.mCurrentID, idJob, randrange(self.kRangeCapital.start, self.kRangeCapital.stop), recipe)
@@ -40,17 +43,12 @@ class ActorFactory(object):
         return newActor
 
     def Redraw(self, actor: Actor) -> Actor:
+        """
+            Redraw an actor. Same logic as CreateNew except it takes an already existing actor as input and preserves its ID. To be used after an actor's bankruptcy.
+        """
         idJob = self.kJobPicker.PickJob()
         recipe = self.kRecipePicker.PickRecipe(JobID=idJob)
         return Actor(actor.mCurrentID, idJob, randrange(self.kRangeCapital.start, self.kRangeCapital.stop), recipe)
 
 
 
-class OrderFactory(object):
-    def __init__(self):
-        self.mCurrentID = 0
-    
-    def CreateNew(self, idCreator: int, side: bool, quantity: int, price: int) -> Order:
-        order = Order(ID=self.mCurrentID, CreatorID=idCreator, Side=side, Price=price, Quantity=quantity)
-        self.mCurrentID += 1
-        return order
