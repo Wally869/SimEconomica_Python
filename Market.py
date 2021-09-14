@@ -3,16 +3,18 @@ from dataclasses import field, dataclass
 
 from Actor import Actor
 from Order import Order, Match, OrderResult
+from Historical import Historical
 
-
+from Interfaces import IClearable, IMarket
 
 
 @dataclass
-class Market(object):
+class Market(IMarket, IClearable):
     ID: int
     Bids: List[Order] = field(default_factory=list)
     Offers: List[Order] = field(default_factory=list)
     Matches: List[Match] = field(default_factory=list)
+    Historicals: List[Historical] = field(default_factory=list)
 
     def AddOrder(self, order: Order):
         """
@@ -44,16 +46,55 @@ class Market(object):
         """
             Compute auction clearing price from matching orders
         """
-        clearingPrice = 0
-        for match in self.Matches:
-            clearingPrice += (match.Bid.Price + match.Ask.Price) / 2
-        clearingPrice /= len(self.Matches)
-        return int(clearingPrice)
+        if (len(self.Matches) == 0):
+            return -1
+        
+        else:
+            clearingPrice = 0
+            for match in self.Matches:
+                clearingPrice += (match.Bid.Price + match.Ask.Price) / 2
+            clearingPrice /= len(self.Matches)
+            return int(clearingPrice)
+
+    def RecordHistorical(self, clearingPrice: int):
+        """
+            Record historical data on quantity bid and offer as well as matches and clearing price for a given round.  
+        """
+        summedBidQuantity = 0
+        for i in range(len(self.Bids)):
+            summedBidQuantity += self.Bids[i].Quantity
+
+        summedOfferQuantity = 0
+        for i in range(len(self.Offers)):
+            summedOfferQuantity += self.Offers[i].Quantity
+
+        summedMatchedQuantity = 0
+        for i in range(len(self.Matches)):
+            summedMatchedQuantity += self.Matches[i].Quantity
+
+        summedBidQuantity += summedMatchedQuantity
+        summedOfferQuantity += summedMatchedQuantity
+
+        self.Historicals.append(Historical(summedBidQuantity, summedOfferQuantity, clearingPrice, summedMatchedQuantity))
+
+    def ComputeHistoricalPrice(self, sizeWindow: int) -> int:
+        """
+            From historicals, compute a mean price for a given window. 
+        """
+        temp = []
+        for historical in self.Historicals[-sizeWindow:]:
+            if historical.ClearingPrice != -1:
+                temp.append(historical.ClearingPrice)
+        if len(temp) != 0:
+            return int(sum(temp) / len(temp))
+        else:
+            return 0
 
     def ProcessResults(self, clearingPrice: int, actorsPool: List[Actor]):
         """
             Process Results from auction: notify participants of results
         """
+        self.RecordHistorical(clearingPrice)
         # process matches  
         for match in self.Matches:
             actorsPool[match.Bid.CreatorID].NotifyOrderResult(OrderResult.FromMatchedOrder(self.ID, clearingPrice, match.Bid))
@@ -62,3 +103,7 @@ class Market(object):
             for order in segment:
                 actorsPool[order.CreatorID].NotifyOrderResult(OrderResult.FromRejectedOrder(self.ID, clearingPrice, order))
 
+    def ClearTempData(self):
+        self.Bids = []
+        self.Offers = []
+        self.Matches = []

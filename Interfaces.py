@@ -1,4 +1,5 @@
 
+from Order import Order
 
 class IClearable(object):
     """
@@ -8,4 +9,12 @@ class IClearable(object):
         pass
 
     def ClearTempData(self):
+        pass
+
+
+class IMarket(object):
+    """
+        Interface for basic market functions: add order, clearing c
+    """
+    def AddOrder(self, order: Order):
         pass

@@ -29,6 +29,8 @@ class InventorySlot(object):
         return self.Capacity
     def GetStock(self) -> int:
         return self.Stock 
+    def GetFreeSpace(self) -> int:
+        return self.Capacity - self.Stock
 
 
 class Inventory(object):
@@ -42,5 +44,7 @@ class Inventory(object):
         return self.mSlots[key].Capacity
     def GetFillRate(self, key: int) -> float:
         return self.mSlots[key].FillRate
+    def GetFreeSpace(self, key: int) -> int:
+        return self.mSlots[key].GetFreeSpace()
 
 

@@ -13,17 +13,33 @@ class Order(object):
 
 
 @dataclass
+class ActorOrderRecord(object):
+    Side: bool
+    Price: int
+    Quantity: int
+
+
+@dataclass
 class Match(object):
     Bid: Order
     Ask: Order
 
+    @property
+    def Quantity(self) -> int:
+        return self.Bid.Quantity
 
+
+@dataclass
+class WaitingOrder(object):
+    MarketID: int
+    Order: Order
 
 
 class BaseOrderResult(object):
     pass
 
 
+@dataclass
 class OrderResult(BaseOrderResult):
     """
         Data sent from Market to Actor, since no records of trades in actor

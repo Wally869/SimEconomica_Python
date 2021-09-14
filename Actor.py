@@ -3,7 +3,7 @@ from dataclasses import dataclass
 
 # Systems
 from Inventory import Inventory
-from Order import Order, OrderResult
+from Order import Order, OrderResult, ActorOrderRecord, WaitingOrder
 from OrderFactory import OrderFactory
 
 # Data
@@ -12,7 +12,7 @@ from Resources import RESOURCES, RECIPES
 from Job import JOBS
 
 # Interfaces 
-from Interfaces import IClearable
+from Interfaces import IClearable, IMarket
 
 
 class BaseActor(object):
@@ -27,7 +27,9 @@ class Actor(BaseActor, IClearable):
         self.mAvailableCapital: int = capital
         self.mInventory: Inventory = Inventory()
         self.mCurrentRecipe: Recipe = recipe
+        self.mWaitingOrders: List[WaitingOrder] = list()
         self._mOrderResults: List[OrderResult] = list()
+        self.mOrderRecords: List[ActorOrderRecord] = list()
 
     def __str__(self):
         return JOBS[self.mJob].Name + " - " + self.mCurrentRecipe.Name + " - Capital: " + str(self.mCapital)
@@ -43,7 +45,7 @@ class Actor(BaseActor, IClearable):
         if len(self.mCurrentRecipe.Inputs) > 0:
             for ingredient in self.mCurrentRecipe.Inputs:
                 temp = self.mInventory[ingredient.ResourceID].Stock / ingredient.Quantity
-                if temp < capacity:
+                if temp < capacity or capacity == 0:
                     capacity = temp
         else:
             resourceID = self.mCurrentRecipe.Outputs[0].ResourceID
@@ -60,9 +62,30 @@ class Actor(BaseActor, IClearable):
         for ingredient in self.mCurrentRecipe.Outputs:
             self.mInventory[ingredient.ResourceID].Add(ingredient.Quantity * quantityToProduce)
 
+    def DeterminePurchaseQuantity(self, idProduct: int, market: IMarket):
+        """
+            Determine how much to bid for for current recipe
+        """
+
+
     def CreateOrder(self, side: bool, quantity: int, price: int) -> Order:
         return OrderFactory.CreateNew(self.kID, side, quantity, price)
         #return Order(OrderFactory.ID, self.kID, side, price, quantity)
+
+    def PrepareOrders(self):
+        """
+            Prepare bids and offers according to current state of inventory and capital available
+        """
+        tempOrder = OrderFactory.CreateNew(self.kID, True, 4, 11)
+        self.mWaitingOrders.append(WaitingOrder(self.mCurrentRecipe.Outputs[0].ResourceID, tempOrder))
+
+    def PostOrder(self, order: Order, marketID: int, markets: List[IMarket]):
+        self.PostOrder_SingleMarket(order, markets[marketID])
+
+    def PostOrder_SingleMarket(self, order: Order, market: IMarket):
+        self.mAvailableCapital -= order.Quantity * order.Price
+        market.AddOrder(order)
+        self.mOrderRecords.append(ActorOrderRecord(order.Side, order.Price, order.Quantity))
 
     def NotifyOrderResult(self, orderResult: OrderResult): 
         """
@@ -85,9 +108,20 @@ class Actor(BaseActor, IClearable):
                     self.mInventory[order.MarketID].Sub(order.Quantity)
                     self.mCapital += order.Quantity * order.ClearingPrice
 
+    def AdjustPriceBeliefs(self):
+        """
+            Adjust price beliefs according to quantity matched and price given
+        """
+        # need to recompose stuff
+        marketIDs = set()
+        for order in self._mOrderResults:
+            marketIDs.add(order.MarketID)
+        marketIDs = list(marketIDs)
+
     def ClearTempData(self):
         """
-            Clear _mOrderResults
+            Clear order results, order records and set available capital back to capital
         """
         self._mOrderResults = []
-
+        self.mOrderRecords = []
+        self.mAvailableCapital = self.mCapital
