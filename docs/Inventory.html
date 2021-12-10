@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <meta name="generator" content="pdoc 0.9.2" />
-<title>Python.Inventory API documentation</title>
+<title>SimEconomica.Inventory API documentation</title>
 <meta name="description" content="" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
@@ -19,7 +19,7 @@
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>Python.Inventory</code></h1>
+<h1 class="title">Module <code>SimEconomica.Inventory</code></h1>
 </header>
 <section id="section-intro">
 <details class="source">
@@ -83,7 +83,7 @@ class Inventory(object):
 <section>
 <h2 class="section-title" id="header-classes">Classes</h2>
 <dl>
-<dt id="Python.Inventory.Inventory"><code class="flex name class">
+<dt id="SimEconomica.Inventory.Inventory"><code class="flex name class">
 <span>class <span class="ident">Inventory</span></span>
 </code></dt>
 <dd>
@@ -108,7 +108,7 @@ class Inventory(object):
 </details>
 <h3>Methods</h3>
 <dl>
-<dt id="Python.Inventory.Inventory.GetCapacity"><code class="name flex">
+<dt id="SimEconomica.Inventory.Inventory.GetCapacity"><code class="name flex">
 <span>def <span class="ident">GetCapacity</span></span>(<span>self, key: int) ‑> int</span>
 </code></dt>
 <dd>
@@ -121,7 +121,7 @@ class Inventory(object):
     return self.mSlots[key].Capacity</code></pre>
 </details>
 </dd>
-<dt id="Python.Inventory.Inventory.GetFillRate"><code class="name flex">
+<dt id="SimEconomica.Inventory.Inventory.GetFillRate"><code class="name flex">
 <span>def <span class="ident">GetFillRate</span></span>(<span>self, key: int) ‑> float</span>
 </code></dt>
 <dd>
@@ -134,7 +134,7 @@ class Inventory(object):
     return self.mSlots[key].FillRate</code></pre>
 </details>
 </dd>
-<dt id="Python.Inventory.Inventory.GetFreeSpace"><code class="name flex">
+<dt id="SimEconomica.Inventory.Inventory.GetFreeSpace"><code class="name flex">
 <span>def <span class="ident">GetFreeSpace</span></span>(<span>self, key: int) ‑> int</span>
 </code></dt>
 <dd>
@@ -147,7 +147,7 @@ class Inventory(object):
     return self.mSlots[key].GetFreeSpace()</code></pre>
 </details>
 </dd>
-<dt id="Python.Inventory.Inventory.GetStock"><code class="name flex">
+<dt id="SimEconomica.Inventory.Inventory.GetStock"><code class="name flex">
 <span>def <span class="ident">GetStock</span></span>(<span>self, key: int) ‑> int</span>
 </code></dt>
 <dd>
@@ -162,7 +162,7 @@ class Inventory(object):
 </dd>
 </dl>
 </dd>
-<dt id="Python.Inventory.InventorySlot"><code class="flex name class">
+<dt id="SimEconomica.Inventory.InventorySlot"><code class="flex name class">
 <span>class <span class="ident">InventorySlot</span></span>
 <span>(</span><span>Stock: int, Capacity: int)</span>
 </code></dt>
@@ -198,18 +198,18 @@ class InventorySlot(object):
 </details>
 <h3>Class variables</h3>
 <dl>
-<dt id="Python.Inventory.InventorySlot.Capacity"><code class="name">var <span class="ident">Capacity</span> : int</code></dt>
+<dt id="SimEconomica.Inventory.InventorySlot.Capacity"><code class="name">var <span class="ident">Capacity</span> : int</code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="Python.Inventory.InventorySlot.Stock"><code class="name">var <span class="ident">Stock</span> : int</code></dt>
+<dt id="SimEconomica.Inventory.InventorySlot.Stock"><code class="name">var <span class="ident">Stock</span> : int</code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
 </dl>
 <h3>Instance variables</h3>
 <dl>
-<dt id="Python.Inventory.InventorySlot.FillRate"><code class="name">var <span class="ident">FillRate</span> : float</code></dt>
+<dt id="SimEconomica.Inventory.InventorySlot.FillRate"><code class="name">var <span class="ident">FillRate</span> : float</code></dt>
 <dd>
 <div class="desc"></div>
 <details class="source">
@@ -224,7 +224,7 @@ def FillRate(self) -&gt; float:
 </dl>
 <h3>Methods</h3>
 <dl>
-<dt id="Python.Inventory.InventorySlot.Add"><code class="name flex">
+<dt id="SimEconomica.Inventory.InventorySlot.Add"><code class="name flex">
 <span>def <span class="ident">Add</span></span>(<span>self, value: int)</span>
 </code></dt>
 <dd>
@@ -237,7 +237,7 @@ def FillRate(self) -&gt; float:
     self.Stock = self + value</code></pre>
 </details>
 </dd>
-<dt id="Python.Inventory.InventorySlot.GetCapacity"><code class="name flex">
+<dt id="SimEconomica.Inventory.InventorySlot.GetCapacity"><code class="name flex">
 <span>def <span class="ident">GetCapacity</span></span>(<span>self) ‑> int</span>
 </code></dt>
 <dd>
@@ -250,7 +250,7 @@ def FillRate(self) -&gt; float:
     return self.Capacity</code></pre>
 </details>
 </dd>
-<dt id="Python.Inventory.InventorySlot.GetFillRate"><code class="name flex">
+<dt id="SimEconomica.Inventory.InventorySlot.GetFillRate"><code class="name flex">
 <span>def <span class="ident">GetFillRate</span></span>(<span>self) ‑> float</span>
 </code></dt>
 <dd>
@@ -263,7 +263,7 @@ def FillRate(self) -&gt; float:
     return self.Stock / self.Capacity</code></pre>
 </details>
 </dd>
-<dt id="Python.Inventory.InventorySlot.GetFreeSpace"><code class="name flex">
+<dt id="SimEconomica.Inventory.InventorySlot.GetFreeSpace"><code class="name flex">
 <span>def <span class="ident">GetFreeSpace</span></span>(<span>self) ‑> int</span>
 </code></dt>
 <dd>
@@ -276,7 +276,7 @@ def FillRate(self) -&gt; float:
     return self.Capacity - self.Stock</code></pre>
 </details>
 </dd>
-<dt id="Python.Inventory.InventorySlot.GetStock"><code class="name flex">
+<dt id="SimEconomica.Inventory.InventorySlot.GetStock"><code class="name flex">
 <span>def <span class="ident">GetStock</span></span>(<span>self) ‑> int</span>
 </code></dt>
 <dd>
@@ -289,7 +289,7 @@ def FillRate(self) -&gt; float:
     return self.Stock </code></pre>
 </details>
 </dd>
-<dt id="Python.Inventory.InventorySlot.Sub"><code class="name flex">
+<dt id="SimEconomica.Inventory.InventorySlot.Sub"><code class="name flex">
 <span>def <span class="ident">Sub</span></span>(<span>self, value: int)</span>
 </code></dt>
 <dd>
@@ -315,32 +315,32 @@ def FillRate(self) -&gt; float:
 <ul id="index">
 <li><h3>Super-module</h3>
 <ul>
-<li><code><a title="Python" href="index.html">Python</a></code></li>
+<li><code><a title="SimEconomica" href="index.html">SimEconomica</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-classes">Classes</a></h3>
 <ul>
 <li>
-<h4><code><a title="Python.Inventory.Inventory" href="#Python.Inventory.Inventory">Inventory</a></code></h4>
+<h4><code><a title="SimEconomica.Inventory.Inventory" href="#SimEconomica.Inventory.Inventory">Inventory</a></code></h4>
 <ul class="">
-<li><code><a title="Python.Inventory.Inventory.GetCapacity" href="#Python.Inventory.Inventory.GetCapacity">GetCapacity</a></code></li>
-<li><code><a title="Python.Inventory.Inventory.GetFillRate" href="#Python.Inventory.Inventory.GetFillRate">GetFillRate</a></code></li>
-<li><code><a title="Python.Inventory.Inventory.GetFreeSpace" href="#Python.Inventory.Inventory.GetFreeSpace">GetFreeSpace</a></code></li>
-<li><code><a title="Python.Inventory.Inventory.GetStock" href="#Python.Inventory.Inventory.GetStock">GetStock</a></code></li>
+<li><code><a title="SimEconomica.Inventory.Inventory.GetCapacity" href="#SimEconomica.Inventory.Inventory.GetCapacity">GetCapacity</a></code></li>
+<li><code><a title="SimEconomica.Inventory.Inventory.GetFillRate" href="#SimEconomica.Inventory.Inventory.GetFillRate">GetFillRate</a></code></li>
+<li><code><a title="SimEconomica.Inventory.Inventory.GetFreeSpace" href="#SimEconomica.Inventory.Inventory.GetFreeSpace">GetFreeSpace</a></code></li>
+<li><code><a title="SimEconomica.Inventory.Inventory.GetStock" href="#SimEconomica.Inventory.Inventory.GetStock">GetStock</a></code></li>
 </ul>
 </li>
 <li>
-<h4><code><a title="Python.Inventory.InventorySlot" href="#Python.Inventory.InventorySlot">InventorySlot</a></code></h4>
+<h4><code><a title="SimEconomica.Inventory.InventorySlot" href="#SimEconomica.Inventory.InventorySlot">InventorySlot</a></code></h4>
 <ul class="two-column">
-<li><code><a title="Python.Inventory.InventorySlot.Add" href="#Python.Inventory.InventorySlot.Add">Add</a></code></li>
-<li><code><a title="Python.Inventory.InventorySlot.Capacity" href="#Python.Inventory.InventorySlot.Capacity">Capacity</a></code></li>
-<li><code><a title="Python.Inventory.InventorySlot.FillRate" href="#Python.Inventory.InventorySlot.FillRate">FillRate</a></code></li>
-<li><code><a title="Python.Inventory.InventorySlot.GetCapacity" href="#Python.Inventory.InventorySlot.GetCapacity">GetCapacity</a></code></li>
-<li><code><a title="Python.Inventory.InventorySlot.GetFillRate" href="#Python.Inventory.InventorySlot.GetFillRate">GetFillRate</a></code></li>
-<li><code><a title="Python.Inventory.InventorySlot.GetFreeSpace" href="#Python.Inventory.InventorySlot.GetFreeSpace">GetFreeSpace</a></code></li>
-<li><code><a title="Python.Inventory.InventorySlot.GetStock" href="#Python.Inventory.InventorySlot.GetStock">GetStock</a></code></li>
-<li><code><a title="Python.Inventory.InventorySlot.Stock" href="#Python.Inventory.InventorySlot.Stock">Stock</a></code></li>
-<li><code><a title="Python.Inventory.InventorySlot.Sub" href="#Python.Inventory.InventorySlot.Sub">Sub</a></code></li>
+<li><code><a title="SimEconomica.Inventory.InventorySlot.Add" href="#SimEconomica.Inventory.InventorySlot.Add">Add</a></code></li>
+<li><code><a title="SimEconomica.Inventory.InventorySlot.Capacity" href="#SimEconomica.Inventory.InventorySlot.Capacity">Capacity</a></code></li>
+<li><code><a title="SimEconomica.Inventory.InventorySlot.FillRate" href="#SimEconomica.Inventory.InventorySlot.FillRate">FillRate</a></code></li>
+<li><code><a title="SimEconomica.Inventory.InventorySlot.GetCapacity" href="#SimEconomica.Inventory.InventorySlot.GetCapacity">GetCapacity</a></code></li>
+<li><code><a title="SimEconomica.Inventory.InventorySlot.GetFillRate" href="#SimEconomica.Inventory.InventorySlot.GetFillRate">GetFillRate</a></code></li>
+<li><code><a title="SimEconomica.Inventory.InventorySlot.GetFreeSpace" href="#SimEconomica.Inventory.InventorySlot.GetFreeSpace">GetFreeSpace</a></code></li>
+<li><code><a title="SimEconomica.Inventory.InventorySlot.GetStock" href="#SimEconomica.Inventory.InventorySlot.GetStock">GetStock</a></code></li>
+<li><code><a title="SimEconomica.Inventory.InventorySlot.Stock" href="#SimEconomica.Inventory.InventorySlot.Stock">Stock</a></code></li>
+<li><code><a title="SimEconomica.Inventory.InventorySlot.Sub" href="#SimEconomica.Inventory.InventorySlot.Sub">Sub</a></code></li>
 </ul>
 </li>
 </ul>

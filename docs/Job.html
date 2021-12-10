@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <meta name="generator" content="pdoc 0.9.2" />
-<title>Python.Job API documentation</title>
+<title>SimEconomica.Job API documentation</title>
 <meta name="description" content="" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
@@ -19,7 +19,7 @@
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>Python.Job</code></h1>
+<h1 class="title">Module <code>SimEconomica.Job</code></h1>
 </header>
 <section id="section-intro">
 <details class="source">
@@ -50,7 +50,7 @@ JOBS = [Job.from_dict(JOBS_RAW[idElement]) for idElement in range(len(JOBS_RAW))
 <section>
 <h2 class="section-title" id="header-classes">Classes</h2>
 <dl>
-<dt id="Python.Job.Job"><code class="flex name class">
+<dt id="SimEconomica.Job.Job"><code class="flex name class">
 <span>class <span class="ident">Job</span></span>
 <span>(</span><span>Name: str)</span>
 </code></dt>
@@ -67,14 +67,14 @@ class Job(object):
 </details>
 <h3>Class variables</h3>
 <dl>
-<dt id="Python.Job.Job.Name"><code class="name">var <span class="ident">Name</span> : str</code></dt>
+<dt id="SimEconomica.Job.Job.Name"><code class="name">var <span class="ident">Name</span> : str</code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
 </dl>
 <h3>Static methods</h3>
 <dl>
-<dt id="Python.Job.Job.from_dict"><code class="name flex">
+<dt id="SimEconomica.Job.Job.from_dict"><code class="name flex">
 <span>def <span class="ident">from_dict</span></span>(<span>kvs: Union[dict, list, str, int, float, bool, NoneType], *, infer_missing=False) ‑> ~A</span>
 </code></dt>
 <dd>
@@ -91,7 +91,7 @@ def from_dict(cls: Type[A],
     return _decode_dataclass(cls, kvs, infer_missing)</code></pre>
 </details>
 </dd>
-<dt id="Python.Job.Job.from_json"><code class="name flex">
+<dt id="SimEconomica.Job.Job.from_json"><code class="name flex">
 <span>def <span class="ident">from_json</span></span>(<span>s: Union[str, bytes, bytearray], *, parse_float=None, parse_int=None, parse_constant=None, infer_missing=False, **kw) ‑> ~A</span>
 </code></dt>
 <dd>
@@ -117,7 +117,7 @@ def from_json(cls: Type[A],
     return cls.from_dict(kvs, infer_missing=infer_missing)</code></pre>
 </details>
 </dd>
-<dt id="Python.Job.Job.schema"><code class="name flex">
+<dt id="SimEconomica.Job.Job.schema"><code class="name flex">
 <span>def <span class="ident">schema</span></span>(<span>*, infer_missing: bool = False, only=None, exclude=(), many: bool = False, context=None, load_only=(), dump_only=(), partial: bool = False, unknown=None) ‑> dataclasses_json.mm.SchemaF[~A]</span>
 </code></dt>
 <dd>
@@ -159,7 +159,7 @@ def schema(cls: Type[A],
 </dl>
 <h3>Methods</h3>
 <dl>
-<dt id="Python.Job.Job.to_dict"><code class="name flex">
+<dt id="SimEconomica.Job.Job.to_dict"><code class="name flex">
 <span>def <span class="ident">to_dict</span></span>(<span>self, encode_json=False) ‑> Dict[str, Union[dict, list, str, int, float, bool, NoneType]]</span>
 </code></dt>
 <dd>
@@ -172,7 +172,7 @@ def schema(cls: Type[A],
     return _asdict(self, encode_json=encode_json)</code></pre>
 </details>
 </dd>
-<dt id="Python.Job.Job.to_json"><code class="name flex">
+<dt id="SimEconomica.Job.Job.to_json"><code class="name flex">
 <span>def <span class="ident">to_json</span></span>(<span>self, *, skipkeys: bool = False, ensure_ascii: bool = True, check_circular: bool = True, allow_nan: bool = True, indent: Union[int, str, NoneType] = None, separators: Tuple[str, str] = None, default: Callable = None, sort_keys: bool = False, **kw) ‑> str</span>
 </code></dt>
 <dd>
@@ -218,20 +218,20 @@ def schema(cls: Type[A],
 <ul id="index">
 <li><h3>Super-module</h3>
 <ul>
-<li><code><a title="Python" href="index.html">Python</a></code></li>
+<li><code><a title="SimEconomica" href="index.html">SimEconomica</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-classes">Classes</a></h3>
 <ul>
 <li>
-<h4><code><a title="Python.Job.Job" href="#Python.Job.Job">Job</a></code></h4>
+<h4><code><a title="SimEconomica.Job.Job" href="#SimEconomica.Job.Job">Job</a></code></h4>
 <ul class="two-column">
-<li><code><a title="Python.Job.Job.Name" href="#Python.Job.Job.Name">Name</a></code></li>
-<li><code><a title="Python.Job.Job.from_dict" href="#Python.Job.Job.from_dict">from_dict</a></code></li>
-<li><code><a title="Python.Job.Job.from_json" href="#Python.Job.Job.from_json">from_json</a></code></li>
-<li><code><a title="Python.Job.Job.schema" href="#Python.Job.Job.schema">schema</a></code></li>
-<li><code><a title="Python.Job.Job.to_dict" href="#Python.Job.Job.to_dict">to_dict</a></code></li>
-<li><code><a title="Python.Job.Job.to_json" href="#Python.Job.Job.to_json">to_json</a></code></li>
+<li><code><a title="SimEconomica.Job.Job.Name" href="#SimEconomica.Job.Job.Name">Name</a></code></li>
+<li><code><a title="SimEconomica.Job.Job.from_dict" href="#SimEconomica.Job.Job.from_dict">from_dict</a></code></li>
+<li><code><a title="SimEconomica.Job.Job.from_json" href="#SimEconomica.Job.Job.from_json">from_json</a></code></li>
+<li><code><a title="SimEconomica.Job.Job.schema" href="#SimEconomica.Job.Job.schema">schema</a></code></li>
+<li><code><a title="SimEconomica.Job.Job.to_dict" href="#SimEconomica.Job.Job.to_dict">to_dict</a></code></li>
+<li><code><a title="SimEconomica.Job.Job.to_json" href="#SimEconomica.Job.Job.to_json">to_json</a></code></li>
 </ul>
 </li>
 </ul>

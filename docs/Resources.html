@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <meta name="generator" content="pdoc 0.9.2" />
-<title>Python.Resources API documentation</title>
+<title>SimEconomica.Resources API documentation</title>
 <meta name="description" content="" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
@@ -19,7 +19,7 @@
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>Python.Resources</code></h1>
+<h1 class="title">Module <code>SimEconomica.Resources</code></h1>
 </header>
 <section id="section-intro">
 <details class="source">
@@ -90,7 +90,7 @@ RECIPES = [
 <section>
 <h2 class="section-title" id="header-classes">Classes</h2>
 <dl>
-<dt id="Python.Resources.BaseResource"><code class="flex name class">
+<dt id="SimEconomica.Resources.BaseResource"><code class="flex name class">
 <span>class <span class="ident">BaseResource</span></span>
 </code></dt>
 <dd>
@@ -104,10 +104,10 @@ RECIPES = [
 </details>
 <h3>Subclasses</h3>
 <ul class="hlist">
-<li><a title="Python.Resources.Resource" href="#Python.Resources.Resource">Resource</a></li>
+<li><a title="SimEconomica.Resources.Resource" href="#SimEconomica.Resources.Resource">Resource</a></li>
 </ul>
 </dd>
-<dt id="Python.Resources.Ingredient"><code class="flex name class">
+<dt id="SimEconomica.Resources.Ingredient"><code class="flex name class">
 <span>class <span class="ident">Ingredient</span></span>
 <span>(</span><span>ResourceID: int, Quantity: int)</span>
 </code></dt>
@@ -125,18 +125,18 @@ class Ingredient(object):
 </details>
 <h3>Class variables</h3>
 <dl>
-<dt id="Python.Resources.Ingredient.Quantity"><code class="name">var <span class="ident">Quantity</span> : int</code></dt>
+<dt id="SimEconomica.Resources.Ingredient.Quantity"><code class="name">var <span class="ident">Quantity</span> : int</code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="Python.Resources.Ingredient.ResourceID"><code class="name">var <span class="ident">ResourceID</span> : int</code></dt>
+<dt id="SimEconomica.Resources.Ingredient.ResourceID"><code class="name">var <span class="ident">ResourceID</span> : int</code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
 </dl>
 <h3>Static methods</h3>
 <dl>
-<dt id="Python.Resources.Ingredient.from_dict"><code class="name flex">
+<dt id="SimEconomica.Resources.Ingredient.from_dict"><code class="name flex">
 <span>def <span class="ident">from_dict</span></span>(<span>kvs: Union[dict, list, str, int, float, bool, NoneType], *, infer_missing=False) ‑> ~A</span>
 </code></dt>
 <dd>
@@ -153,7 +153,7 @@ def from_dict(cls: Type[A],
     return _decode_dataclass(cls, kvs, infer_missing)</code></pre>
 </details>
 </dd>
-<dt id="Python.Resources.Ingredient.from_json"><code class="name flex">
+<dt id="SimEconomica.Resources.Ingredient.from_json"><code class="name flex">
 <span>def <span class="ident">from_json</span></span>(<span>s: Union[str, bytes, bytearray], *, parse_float=None, parse_int=None, parse_constant=None, infer_missing=False, **kw) ‑> ~A</span>
 </code></dt>
 <dd>
@@ -179,7 +179,7 @@ def from_json(cls: Type[A],
     return cls.from_dict(kvs, infer_missing=infer_missing)</code></pre>
 </details>
 </dd>
-<dt id="Python.Resources.Ingredient.schema"><code class="name flex">
+<dt id="SimEconomica.Resources.Ingredient.schema"><code class="name flex">
 <span>def <span class="ident">schema</span></span>(<span>*, infer_missing: bool = False, only=None, exclude=(), many: bool = False, context=None, load_only=(), dump_only=(), partial: bool = False, unknown=None) ‑> dataclasses_json.mm.SchemaF[~A]</span>
 </code></dt>
 <dd>
@@ -221,7 +221,7 @@ def schema(cls: Type[A],
 </dl>
 <h3>Methods</h3>
 <dl>
-<dt id="Python.Resources.Ingredient.to_dict"><code class="name flex">
+<dt id="SimEconomica.Resources.Ingredient.to_dict"><code class="name flex">
 <span>def <span class="ident">to_dict</span></span>(<span>self, encode_json=False) ‑> Dict[str, Union[dict, list, str, int, float, bool, NoneType]]</span>
 </code></dt>
 <dd>
@@ -234,7 +234,7 @@ def schema(cls: Type[A],
     return _asdict(self, encode_json=encode_json)</code></pre>
 </details>
 </dd>
-<dt id="Python.Resources.Ingredient.to_json"><code class="name flex">
+<dt id="SimEconomica.Resources.Ingredient.to_json"><code class="name flex">
 <span>def <span class="ident">to_json</span></span>(<span>self, *, skipkeys: bool = False, ensure_ascii: bool = True, check_circular: bool = True, allow_nan: bool = True, indent: Union[int, str, NoneType] = None, separators: Tuple[str, str] = None, default: Callable = None, sort_keys: bool = False, **kw) ‑> str</span>
 </code></dt>
 <dd>
@@ -269,12 +269,12 @@ def schema(cls: Type[A],
 </dd>
 </dl>
 </dd>
-<dt id="Python.Resources.Recipe"><code class="flex name class">
+<dt id="SimEconomica.Resources.Recipe"><code class="flex name class">
 <span>class <span class="ident">Recipe</span></span>
-<span>(</span><span>Name: str, JobsRequired: List[int], Inputs: List[<a title="Python.Resources.Ingredient" href="#Python.Resources.Ingredient">Ingredient</a>], Outputs: List[<a title="Python.Resources.Ingredient" href="#Python.Resources.Ingredient">Ingredient</a>])</span>
+<span>(</span><span>Name: str, JobsRequired: List[int], Inputs: List[<a title="SimEconomica.Resources.Ingredient" href="#SimEconomica.Resources.Ingredient">Ingredient</a>], Outputs: List[<a title="SimEconomica.Resources.Ingredient" href="#SimEconomica.Resources.Ingredient">Ingredient</a>])</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Recipe(Name: str, JobsRequired: List[int], Inputs: List[Python.Resources.Ingredient], Outputs: List[Python.Resources.Ingredient])</p></div>
+<div class="desc"><p>Recipe(Name: str, JobsRequired: List[int], Inputs: List[SimEconomica.Resources.Ingredient], Outputs: List[SimEconomica.Resources.Ingredient])</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -289,26 +289,26 @@ class Recipe(object):
 </details>
 <h3>Class variables</h3>
 <dl>
-<dt id="Python.Resources.Recipe.Inputs"><code class="name">var <span class="ident">Inputs</span> : List[<a title="Python.Resources.Ingredient" href="#Python.Resources.Ingredient">Ingredient</a>]</code></dt>
+<dt id="SimEconomica.Resources.Recipe.Inputs"><code class="name">var <span class="ident">Inputs</span> : List[<a title="SimEconomica.Resources.Ingredient" href="#SimEconomica.Resources.Ingredient">Ingredient</a>]</code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="Python.Resources.Recipe.JobsRequired"><code class="name">var <span class="ident">JobsRequired</span> : List[int]</code></dt>
+<dt id="SimEconomica.Resources.Recipe.JobsRequired"><code class="name">var <span class="ident">JobsRequired</span> : List[int]</code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="Python.Resources.Recipe.Name"><code class="name">var <span class="ident">Name</span> : str</code></dt>
+<dt id="SimEconomica.Resources.Recipe.Name"><code class="name">var <span class="ident">Name</span> : str</code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="Python.Resources.Recipe.Outputs"><code class="name">var <span class="ident">Outputs</span> : List[<a title="Python.Resources.Ingredient" href="#Python.Resources.Ingredient">Ingredient</a>]</code></dt>
+<dt id="SimEconomica.Resources.Recipe.Outputs"><code class="name">var <span class="ident">Outputs</span> : List[<a title="SimEconomica.Resources.Ingredient" href="#SimEconomica.Resources.Ingredient">Ingredient</a>]</code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
 </dl>
 <h3>Static methods</h3>
 <dl>
-<dt id="Python.Resources.Recipe.from_dict"><code class="name flex">
+<dt id="SimEconomica.Resources.Recipe.from_dict"><code class="name flex">
 <span>def <span class="ident">from_dict</span></span>(<span>kvs: Union[dict, list, str, int, float, bool, NoneType], *, infer_missing=False) ‑> ~A</span>
 </code></dt>
 <dd>
@@ -325,7 +325,7 @@ def from_dict(cls: Type[A],
     return _decode_dataclass(cls, kvs, infer_missing)</code></pre>
 </details>
 </dd>
-<dt id="Python.Resources.Recipe.from_json"><code class="name flex">
+<dt id="SimEconomica.Resources.Recipe.from_json"><code class="name flex">
 <span>def <span class="ident">from_json</span></span>(<span>s: Union[str, bytes, bytearray], *, parse_float=None, parse_int=None, parse_constant=None, infer_missing=False, **kw) ‑> ~A</span>
 </code></dt>
 <dd>
@@ -351,7 +351,7 @@ def from_json(cls: Type[A],
     return cls.from_dict(kvs, infer_missing=infer_missing)</code></pre>
 </details>
 </dd>
-<dt id="Python.Resources.Recipe.schema"><code class="name flex">
+<dt id="SimEconomica.Resources.Recipe.schema"><code class="name flex">
 <span>def <span class="ident">schema</span></span>(<span>*, infer_missing: bool = False, only=None, exclude=(), many: bool = False, context=None, load_only=(), dump_only=(), partial: bool = False, unknown=None) ‑> dataclasses_json.mm.SchemaF[~A]</span>
 </code></dt>
 <dd>
@@ -393,7 +393,7 @@ def schema(cls: Type[A],
 </dl>
 <h3>Methods</h3>
 <dl>
-<dt id="Python.Resources.Recipe.to_dict"><code class="name flex">
+<dt id="SimEconomica.Resources.Recipe.to_dict"><code class="name flex">
 <span>def <span class="ident">to_dict</span></span>(<span>self, encode_json=False) ‑> Dict[str, Union[dict, list, str, int, float, bool, NoneType]]</span>
 </code></dt>
 <dd>
@@ -406,7 +406,7 @@ def schema(cls: Type[A],
     return _asdict(self, encode_json=encode_json)</code></pre>
 </details>
 </dd>
-<dt id="Python.Resources.Recipe.to_json"><code class="name flex">
+<dt id="SimEconomica.Resources.Recipe.to_json"><code class="name flex">
 <span>def <span class="ident">to_json</span></span>(<span>self, *, skipkeys: bool = False, ensure_ascii: bool = True, check_circular: bool = True, allow_nan: bool = True, indent: Union[int, str, NoneType] = None, separators: Tuple[str, str] = None, default: Callable = None, sort_keys: bool = False, **kw) ‑> str</span>
 </code></dt>
 <dd>
@@ -441,7 +441,7 @@ def schema(cls: Type[A],
 </dd>
 </dl>
 </dd>
-<dt id="Python.Resources.Resource"><code class="flex name class">
+<dt id="SimEconomica.Resources.Resource"><code class="flex name class">
 <span>class <span class="ident">Resource</span></span>
 <span>(</span><span>Name: str)</span>
 </code></dt>
@@ -458,18 +458,18 @@ class Resource(BaseResource):
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">
-<li><a title="Python.Resources.BaseResource" href="#Python.Resources.BaseResource">BaseResource</a></li>
+<li><a title="SimEconomica.Resources.BaseResource" href="#SimEconomica.Resources.BaseResource">BaseResource</a></li>
 </ul>
 <h3>Class variables</h3>
 <dl>
-<dt id="Python.Resources.Resource.Name"><code class="name">var <span class="ident">Name</span> : str</code></dt>
+<dt id="SimEconomica.Resources.Resource.Name"><code class="name">var <span class="ident">Name</span> : str</code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
 </dl>
 <h3>Static methods</h3>
 <dl>
-<dt id="Python.Resources.Resource.from_dict"><code class="name flex">
+<dt id="SimEconomica.Resources.Resource.from_dict"><code class="name flex">
 <span>def <span class="ident">from_dict</span></span>(<span>kvs: Union[dict, list, str, int, float, bool, NoneType], *, infer_missing=False) ‑> ~A</span>
 </code></dt>
 <dd>
@@ -486,7 +486,7 @@ def from_dict(cls: Type[A],
     return _decode_dataclass(cls, kvs, infer_missing)</code></pre>
 </details>
 </dd>
-<dt id="Python.Resources.Resource.from_json"><code class="name flex">
+<dt id="SimEconomica.Resources.Resource.from_json"><code class="name flex">
 <span>def <span class="ident">from_json</span></span>(<span>s: Union[str, bytes, bytearray], *, parse_float=None, parse_int=None, parse_constant=None, infer_missing=False, **kw) ‑> ~A</span>
 </code></dt>
 <dd>
@@ -512,7 +512,7 @@ def from_json(cls: Type[A],
     return cls.from_dict(kvs, infer_missing=infer_missing)</code></pre>
 </details>
 </dd>
-<dt id="Python.Resources.Resource.schema"><code class="name flex">
+<dt id="SimEconomica.Resources.Resource.schema"><code class="name flex">
 <span>def <span class="ident">schema</span></span>(<span>*, infer_missing: bool = False, only=None, exclude=(), many: bool = False, context=None, load_only=(), dump_only=(), partial: bool = False, unknown=None) ‑> dataclasses_json.mm.SchemaF[~A]</span>
 </code></dt>
 <dd>
@@ -554,7 +554,7 @@ def schema(cls: Type[A],
 </dl>
 <h3>Methods</h3>
 <dl>
-<dt id="Python.Resources.Resource.to_dict"><code class="name flex">
+<dt id="SimEconomica.Resources.Resource.to_dict"><code class="name flex">
 <span>def <span class="ident">to_dict</span></span>(<span>self, encode_json=False) ‑> Dict[str, Union[dict, list, str, int, float, bool, NoneType]]</span>
 </code></dt>
 <dd>
@@ -567,7 +567,7 @@ def schema(cls: Type[A],
     return _asdict(self, encode_json=encode_json)</code></pre>
 </details>
 </dd>
-<dt id="Python.Resources.Resource.to_json"><code class="name flex">
+<dt id="SimEconomica.Resources.Resource.to_json"><code class="name flex">
 <span>def <span class="ident">to_json</span></span>(<span>self, *, skipkeys: bool = False, ensure_ascii: bool = True, check_circular: bool = True, allow_nan: bool = True, indent: Union[int, str, NoneType] = None, separators: Tuple[str, str] = None, default: Callable = None, sort_keys: bool = False, **kw) ‑> str</span>
 </code></dt>
 <dd>
@@ -613,49 +613,49 @@ def schema(cls: Type[A],
 <ul id="index">
 <li><h3>Super-module</h3>
 <ul>
-<li><code><a title="Python" href="index.html">Python</a></code></li>
+<li><code><a title="SimEconomica" href="index.html">SimEconomica</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-classes">Classes</a></h3>
 <ul>
 <li>
-<h4><code><a title="Python.Resources.BaseResource" href="#Python.Resources.BaseResource">BaseResource</a></code></h4>
+<h4><code><a title="SimEconomica.Resources.BaseResource" href="#SimEconomica.Resources.BaseResource">BaseResource</a></code></h4>
 </li>
 <li>
-<h4><code><a title="Python.Resources.Ingredient" href="#Python.Resources.Ingredient">Ingredient</a></code></h4>
+<h4><code><a title="SimEconomica.Resources.Ingredient" href="#SimEconomica.Resources.Ingredient">Ingredient</a></code></h4>
 <ul class="two-column">
-<li><code><a title="Python.Resources.Ingredient.Quantity" href="#Python.Resources.Ingredient.Quantity">Quantity</a></code></li>
-<li><code><a title="Python.Resources.Ingredient.ResourceID" href="#Python.Resources.Ingredient.ResourceID">ResourceID</a></code></li>
-<li><code><a title="Python.Resources.Ingredient.from_dict" href="#Python.Resources.Ingredient.from_dict">from_dict</a></code></li>
-<li><code><a title="Python.Resources.Ingredient.from_json" href="#Python.Resources.Ingredient.from_json">from_json</a></code></li>
-<li><code><a title="Python.Resources.Ingredient.schema" href="#Python.Resources.Ingredient.schema">schema</a></code></li>
-<li><code><a title="Python.Resources.Ingredient.to_dict" href="#Python.Resources.Ingredient.to_dict">to_dict</a></code></li>
-<li><code><a title="Python.Resources.Ingredient.to_json" href="#Python.Resources.Ingredient.to_json">to_json</a></code></li>
+<li><code><a title="SimEconomica.Resources.Ingredient.Quantity" href="#SimEconomica.Resources.Ingredient.Quantity">Quantity</a></code></li>
+<li><code><a title="SimEconomica.Resources.Ingredient.ResourceID" href="#SimEconomica.Resources.Ingredient.ResourceID">ResourceID</a></code></li>
+<li><code><a title="SimEconomica.Resources.Ingredient.from_dict" href="#SimEconomica.Resources.Ingredient.from_dict">from_dict</a></code></li>
+<li><code><a title="SimEconomica.Resources.Ingredient.from_json" href="#SimEconomica.Resources.Ingredient.from_json">from_json</a></code></li>
+<li><code><a title="SimEconomica.Resources.Ingredient.schema" href="#SimEconomica.Resources.Ingredient.schema">schema</a></code></li>
+<li><code><a title="SimEconomica.Resources.Ingredient.to_dict" href="#SimEconomica.Resources.Ingredient.to_dict">to_dict</a></code></li>
+<li><code><a title="SimEconomica.Resources.Ingredient.to_json" href="#SimEconomica.Resources.Ingredient.to_json">to_json</a></code></li>
 </ul>
 </li>
 <li>
-<h4><code><a title="Python.Resources.Recipe" href="#Python.Resources.Recipe">Recipe</a></code></h4>
+<h4><code><a title="SimEconomica.Resources.Recipe" href="#SimEconomica.Resources.Recipe">Recipe</a></code></h4>
 <ul class="two-column">
-<li><code><a title="Python.Resources.Recipe.Inputs" href="#Python.Resources.Recipe.Inputs">Inputs</a></code></li>
-<li><code><a title="Python.Resources.Recipe.JobsRequired" href="#Python.Resources.Recipe.JobsRequired">JobsRequired</a></code></li>
-<li><code><a title="Python.Resources.Recipe.Name" href="#Python.Resources.Recipe.Name">Name</a></code></li>
-<li><code><a title="Python.Resources.Recipe.Outputs" href="#Python.Resources.Recipe.Outputs">Outputs</a></code></li>
-<li><code><a title="Python.Resources.Recipe.from_dict" href="#Python.Resources.Recipe.from_dict">from_dict</a></code></li>
-<li><code><a title="Python.Resources.Recipe.from_json" href="#Python.Resources.Recipe.from_json">from_json</a></code></li>
-<li><code><a title="Python.Resources.Recipe.schema" href="#Python.Resources.Recipe.schema">schema</a></code></li>
-<li><code><a title="Python.Resources.Recipe.to_dict" href="#Python.Resources.Recipe.to_dict">to_dict</a></code></li>
-<li><code><a title="Python.Resources.Recipe.to_json" href="#Python.Resources.Recipe.to_json">to_json</a></code></li>
+<li><code><a title="SimEconomica.Resources.Recipe.Inputs" href="#SimEconomica.Resources.Recipe.Inputs">Inputs</a></code></li>
+<li><code><a title="SimEconomica.Resources.Recipe.JobsRequired" href="#SimEconomica.Resources.Recipe.JobsRequired">JobsRequired</a></code></li>
+<li><code><a title="SimEconomica.Resources.Recipe.Name" href="#SimEconomica.Resources.Recipe.Name">Name</a></code></li>
+<li><code><a title="SimEconomica.Resources.Recipe.Outputs" href="#SimEconomica.Resources.Recipe.Outputs">Outputs</a></code></li>
+<li><code><a title="SimEconomica.Resources.Recipe.from_dict" href="#SimEconomica.Resources.Recipe.from_dict">from_dict</a></code></li>
+<li><code><a title="SimEconomica.Resources.Recipe.from_json" href="#SimEconomica.Resources.Recipe.from_json">from_json</a></code></li>
+<li><code><a title="SimEconomica.Resources.Recipe.schema" href="#SimEconomica.Resources.Recipe.schema">schema</a></code></li>
+<li><code><a title="SimEconomica.Resources.Recipe.to_dict" href="#SimEconomica.Resources.Recipe.to_dict">to_dict</a></code></li>
+<li><code><a title="SimEconomica.Resources.Recipe.to_json" href="#SimEconomica.Resources.Recipe.to_json">to_json</a></code></li>
 </ul>
 </li>
 <li>
-<h4><code><a title="Python.Resources.Resource" href="#Python.Resources.Resource">Resource</a></code></h4>
+<h4><code><a title="SimEconomica.Resources.Resource" href="#SimEconomica.Resources.Resource">Resource</a></code></h4>
 <ul class="two-column">
-<li><code><a title="Python.Resources.Resource.Name" href="#Python.Resources.Resource.Name">Name</a></code></li>
-<li><code><a title="Python.Resources.Resource.from_dict" href="#Python.Resources.Resource.from_dict">from_dict</a></code></li>
-<li><code><a title="Python.Resources.Resource.from_json" href="#Python.Resources.Resource.from_json">from_json</a></code></li>
-<li><code><a title="Python.Resources.Resource.schema" href="#Python.Resources.Resource.schema">schema</a></code></li>
-<li><code><a title="Python.Resources.Resource.to_dict" href="#Python.Resources.Resource.to_dict">to_dict</a></code></li>
-<li><code><a title="Python.Resources.Resource.to_json" href="#Python.Resources.Resource.to_json">to_json</a></code></li>
+<li><code><a title="SimEconomica.Resources.Resource.Name" href="#SimEconomica.Resources.Resource.Name">Name</a></code></li>
+<li><code><a title="SimEconomica.Resources.Resource.from_dict" href="#SimEconomica.Resources.Resource.from_dict">from_dict</a></code></li>
+<li><code><a title="SimEconomica.Resources.Resource.from_json" href="#SimEconomica.Resources.Resource.from_json">from_json</a></code></li>
+<li><code><a title="SimEconomica.Resources.Resource.schema" href="#SimEconomica.Resources.Resource.schema">schema</a></code></li>
+<li><code><a title="SimEconomica.Resources.Resource.to_dict" href="#SimEconomica.Resources.Resource.to_dict">to_dict</a></code></li>
+<li><code><a title="SimEconomica.Resources.Resource.to_json" href="#SimEconomica.Resources.Resource.to_json">to_json</a></code></li>
 </ul>
 </li>
 </ul>

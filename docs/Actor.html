@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <meta name="generator" content="pdoc 0.9.2" />
-<title>Python.Actor API documentation</title>
+<title>SimEconomica.Actor API documentation</title>
 <meta name="description" content="" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
@@ -19,7 +19,7 @@
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>Python.Actor</code></h1>
+<h1 class="title">Module <code>SimEconomica.Actor</code></h1>
 </header>
 <section id="section-intro">
 <details class="source">
@@ -164,7 +164,7 @@ class Actor(BaseActor, IClearable):
 <section>
 <h2 class="section-title" id="header-classes">Classes</h2>
 <dl>
-<dt id="Python.Actor.Actor"><code class="flex name class">
+<dt id="SimEconomica.Actor.Actor"><code class="flex name class">
 <span>class <span class="ident">Actor</span></span>
 <span>(</span><span>id: int, job: int, capital: int, recipe: Resources.Recipe)</span>
 </code></dt>
@@ -283,12 +283,12 @@ class Actor(BaseActor, IClearable):
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">
-<li><a title="Python.Actor.BaseActor" href="#Python.Actor.BaseActor">BaseActor</a></li>
+<li><a title="SimEconomica.Actor.BaseActor" href="#SimEconomica.Actor.BaseActor">BaseActor</a></li>
 <li>Interfaces.IClearable</li>
 </ul>
 <h3>Methods</h3>
 <dl>
-<dt id="Python.Actor.Actor.AdjustPriceBeliefs"><code class="name flex">
+<dt id="SimEconomica.Actor.Actor.AdjustPriceBeliefs"><code class="name flex">
 <span>def <span class="ident">AdjustPriceBeliefs</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -308,7 +308,7 @@ class Actor(BaseActor, IClearable):
     marketIDs = list(marketIDs)</code></pre>
 </details>
 </dd>
-<dt id="Python.Actor.Actor.ClearTempData"><code class="name flex">
+<dt id="SimEconomica.Actor.Actor.ClearTempData"><code class="name flex">
 <span>def <span class="ident">ClearTempData</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -326,7 +326,7 @@ class Actor(BaseActor, IClearable):
     self.mAvailableCapital = self.mCapital</code></pre>
 </details>
 </dd>
-<dt id="Python.Actor.Actor.CreateOrder"><code class="name flex">
+<dt id="SimEconomica.Actor.Actor.CreateOrder"><code class="name flex">
 <span>def <span class="ident">CreateOrder</span></span>(<span>self, side: bool, quantity: int, price: int) ‑> Order.Order</span>
 </code></dt>
 <dd>
@@ -340,7 +340,7 @@ class Actor(BaseActor, IClearable):
     #return Order(OrderFactory.ID, self.kID, side, price, quantity)</code></pre>
 </details>
 </dd>
-<dt id="Python.Actor.Actor.DeterminePurchaseQuantity"><code class="name flex">
+<dt id="SimEconomica.Actor.Actor.DeterminePurchaseQuantity"><code class="name flex">
 <span>def <span class="ident">DeterminePurchaseQuantity</span></span>(<span>self, idProduct: int, market: Interfaces.IMarket)</span>
 </code></dt>
 <dd>
@@ -356,7 +356,7 @@ class Actor(BaseActor, IClearable):
     pass</code></pre>
 </details>
 </dd>
-<dt id="Python.Actor.Actor.GetProductionCapacity"><code class="name flex">
+<dt id="SimEconomica.Actor.Actor.GetProductionCapacity"><code class="name flex">
 <span>def <span class="ident">GetProductionCapacity</span></span>(<span>self) ‑> int</span>
 </code></dt>
 <dd>
@@ -381,7 +381,7 @@ class Actor(BaseActor, IClearable):
     return int(capacity)</code></pre>
 </details>
 </dd>
-<dt id="Python.Actor.Actor.NotifyOrderResult"><code class="name flex">
+<dt id="SimEconomica.Actor.Actor.NotifyOrderResult"><code class="name flex">
 <span>def <span class="ident">NotifyOrderResult</span></span>(<span>self, orderResult: Order.OrderResult)</span>
 </code></dt>
 <dd>
@@ -399,7 +399,7 @@ Takes an OrderResult instance as argument and appends it to _mOrderResults</p></
     self._mOrderResults.append(orderResult)</code></pre>
 </details>
 </dd>
-<dt id="Python.Actor.Actor.PostOrder"><code class="name flex">
+<dt id="SimEconomica.Actor.Actor.PostOrder"><code class="name flex">
 <span>def <span class="ident">PostOrder</span></span>(<span>self, order: Order.Order, marketID: int, markets: List[Interfaces.IMarket])</span>
 </code></dt>
 <dd>
@@ -412,7 +412,7 @@ Takes an OrderResult instance as argument and appends it to _mOrderResults</p></
     self.PostOrder_SingleMarket(order, markets[marketID])</code></pre>
 </details>
 </dd>
-<dt id="Python.Actor.Actor.PostOrder_SingleMarket"><code class="name flex">
+<dt id="SimEconomica.Actor.Actor.PostOrder_SingleMarket"><code class="name flex">
 <span>def <span class="ident">PostOrder_SingleMarket</span></span>(<span>self, order: Order.Order, market: Interfaces.IMarket)</span>
 </code></dt>
 <dd>
@@ -427,7 +427,7 @@ Takes an OrderResult instance as argument and appends it to _mOrderResults</p></
     self.mOrderRecords.append(ActorOrderRecord(order.Side, order.Price, order.Quantity))</code></pre>
 </details>
 </dd>
-<dt id="Python.Actor.Actor.PrepareOrders"><code class="name flex">
+<dt id="SimEconomica.Actor.Actor.PrepareOrders"><code class="name flex">
 <span>def <span class="ident">PrepareOrders</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -444,7 +444,7 @@ Takes an OrderResult instance as argument and appends it to _mOrderResults</p></
     self.mWaitingOrders.append(WaitingOrder(self.mCurrentRecipe.Outputs[0].ResourceID, tempOrder))</code></pre>
 </details>
 </dd>
-<dt id="Python.Actor.Actor.ProcessOrderResults"><code class="name flex">
+<dt id="SimEconomica.Actor.Actor.ProcessOrderResults"><code class="name flex">
 <span>def <span class="ident">ProcessOrderResults</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -468,7 +468,7 @@ Takes an OrderResult instance as argument and appends it to _mOrderResults</p></
                 self.mCapital += order.Quantity * order.ClearingPrice</code></pre>
 </details>
 </dd>
-<dt id="Python.Actor.Actor.Produce"><code class="name flex">
+<dt id="SimEconomica.Actor.Actor.Produce"><code class="name flex">
 <span>def <span class="ident">Produce</span></span>(<span>self, quantityToProduce: int)</span>
 </code></dt>
 <dd>
@@ -491,7 +491,7 @@ This function is unsafe, and GetProductionCapacity must be called to ensure quan
 </dd>
 </dl>
 </dd>
-<dt id="Python.Actor.BaseActor"><code class="flex name class">
+<dt id="SimEconomica.Actor.BaseActor"><code class="flex name class">
 <span>class <span class="ident">BaseActor</span></span>
 </code></dt>
 <dd>
@@ -505,7 +505,7 @@ This function is unsafe, and GetProductionCapacity must be called to ensure quan
 </details>
 <h3>Subclasses</h3>
 <ul class="hlist">
-<li><a title="Python.Actor.Actor" href="#Python.Actor.Actor">Actor</a></li>
+<li><a title="SimEconomica.Actor.Actor" href="#SimEconomica.Actor.Actor">Actor</a></li>
 </ul>
 </dd>
 </dl>
@@ -519,29 +519,29 @@ This function is unsafe, and GetProductionCapacity must be called to ensure quan
 <ul id="index">
 <li><h3>Super-module</h3>
 <ul>
-<li><code><a title="Python" href="index.html">Python</a></code></li>
+<li><code><a title="SimEconomica" href="index.html">SimEconomica</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-classes">Classes</a></h3>
 <ul>
 <li>
-<h4><code><a title="Python.Actor.Actor" href="#Python.Actor.Actor">Actor</a></code></h4>
+<h4><code><a title="SimEconomica.Actor.Actor" href="#SimEconomica.Actor.Actor">Actor</a></code></h4>
 <ul class="">
-<li><code><a title="Python.Actor.Actor.AdjustPriceBeliefs" href="#Python.Actor.Actor.AdjustPriceBeliefs">AdjustPriceBeliefs</a></code></li>
-<li><code><a title="Python.Actor.Actor.ClearTempData" href="#Python.Actor.Actor.ClearTempData">ClearTempData</a></code></li>
-<li><code><a title="Python.Actor.Actor.CreateOrder" href="#Python.Actor.Actor.CreateOrder">CreateOrder</a></code></li>
-<li><code><a title="Python.Actor.Actor.DeterminePurchaseQuantity" href="#Python.Actor.Actor.DeterminePurchaseQuantity">DeterminePurchaseQuantity</a></code></li>
-<li><code><a title="Python.Actor.Actor.GetProductionCapacity" href="#Python.Actor.Actor.GetProductionCapacity">GetProductionCapacity</a></code></li>
-<li><code><a title="Python.Actor.Actor.NotifyOrderResult" href="#Python.Actor.Actor.NotifyOrderResult">NotifyOrderResult</a></code></li>
-<li><code><a title="Python.Actor.Actor.PostOrder" href="#Python.Actor.Actor.PostOrder">PostOrder</a></code></li>
-<li><code><a title="Python.Actor.Actor.PostOrder_SingleMarket" href="#Python.Actor.Actor.PostOrder_SingleMarket">PostOrder_SingleMarket</a></code></li>
-<li><code><a title="Python.Actor.Actor.PrepareOrders" href="#Python.Actor.Actor.PrepareOrders">PrepareOrders</a></code></li>
-<li><code><a title="Python.Actor.Actor.ProcessOrderResults" href="#Python.Actor.Actor.ProcessOrderResults">ProcessOrderResults</a></code></li>
-<li><code><a title="Python.Actor.Actor.Produce" href="#Python.Actor.Actor.Produce">Produce</a></code></li>
+<li><code><a title="SimEconomica.Actor.Actor.AdjustPriceBeliefs" href="#SimEconomica.Actor.Actor.AdjustPriceBeliefs">AdjustPriceBeliefs</a></code></li>
+<li><code><a title="SimEconomica.Actor.Actor.ClearTempData" href="#SimEconomica.Actor.Actor.ClearTempData">ClearTempData</a></code></li>
+<li><code><a title="SimEconomica.Actor.Actor.CreateOrder" href="#SimEconomica.Actor.Actor.CreateOrder">CreateOrder</a></code></li>
+<li><code><a title="SimEconomica.Actor.Actor.DeterminePurchaseQuantity" href="#SimEconomica.Actor.Actor.DeterminePurchaseQuantity">DeterminePurchaseQuantity</a></code></li>
+<li><code><a title="SimEconomica.Actor.Actor.GetProductionCapacity" href="#SimEconomica.Actor.Actor.GetProductionCapacity">GetProductionCapacity</a></code></li>
+<li><code><a title="SimEconomica.Actor.Actor.NotifyOrderResult" href="#SimEconomica.Actor.Actor.NotifyOrderResult">NotifyOrderResult</a></code></li>
+<li><code><a title="SimEconomica.Actor.Actor.PostOrder" href="#SimEconomica.Actor.Actor.PostOrder">PostOrder</a></code></li>
+<li><code><a title="SimEconomica.Actor.Actor.PostOrder_SingleMarket" href="#SimEconomica.Actor.Actor.PostOrder_SingleMarket">PostOrder_SingleMarket</a></code></li>
+<li><code><a title="SimEconomica.Actor.Actor.PrepareOrders" href="#SimEconomica.Actor.Actor.PrepareOrders">PrepareOrders</a></code></li>
+<li><code><a title="SimEconomica.Actor.Actor.ProcessOrderResults" href="#SimEconomica.Actor.Actor.ProcessOrderResults">ProcessOrderResults</a></code></li>
+<li><code><a title="SimEconomica.Actor.Actor.Produce" href="#SimEconomica.Actor.Actor.Produce">Produce</a></code></li>
 </ul>
 </li>
 <li>
-<h4><code><a title="Python.Actor.BaseActor" href="#Python.Actor.BaseActor">BaseActor</a></code></h4>
+<h4><code><a title="SimEconomica.Actor.BaseActor" href="#SimEconomica.Actor.BaseActor">BaseActor</a></code></h4>
 </li>
 </ul>
 </li>
