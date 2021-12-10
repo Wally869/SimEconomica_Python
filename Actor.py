@@ -66,7 +66,7 @@ class Actor(BaseActor, IClearable):
         """
             Determine how much to bid for for current recipe
         """
-
+        pass
 
     def CreateOrder(self, side: bool, quantity: int, price: int) -> Order:
         return OrderFactory.CreateNew(self.kID, side, quantity, price)
