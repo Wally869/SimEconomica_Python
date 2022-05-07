@@ -57,7 +57,6 @@ class Inventory(object):
         return self.__str__()
 
     def __getitem__(self, key: int) -> InventorySlot:
-        print(key)
         return self.mSlots[key]
 
     def GetStock(self, key: int) -> int:

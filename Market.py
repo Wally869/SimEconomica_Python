@@ -47,7 +47,7 @@ class Market(IMarket, IClearable):
             Compute auction clearing price from matching orders
         """
         if (len(self.Matches) == 0):
-            return -1
+            return 0
         
         else:
             clearingPrice = 0
@@ -98,7 +98,7 @@ class Market(IMarket, IClearable):
         # process matches  
         for match in self.Matches:
             actorsPool[match.Bid.CreatorID].NotifyOrderResult(OrderResult.FromMatchedOrder(self.ID, clearingPrice, match.Bid))
-            actorsPool[match.Bid.CreatorID].NotifyOrderResult(OrderResult.FromMatchedOrder(self.ID, clearingPrice, match.Bid))
+            actorsPool[match.Ask.CreatorID].NotifyOrderResult(OrderResult.FromMatchedOrder(self.ID, clearingPrice, match.Ask))
         for segment in [self.Bids, self.Offers]:
             for order in segment:
                 actorsPool[order.CreatorID].NotifyOrderResult(OrderResult.FromRejectedOrder(self.ID, clearingPrice, order))
