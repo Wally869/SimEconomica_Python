@@ -28,20 +28,28 @@ NB_ROUNDS = 10
 
 # def Main():
 # Create markets
+MarketFactory.Reset()
+
 markets = [MarketFactory.CreateNew() for i in range(len(RESOURCES))]
 # Create ActorFactory and Actors
 actorFactory = ActorFactory(rangeCapital = range(100, 1000, 10))
 actors = [actorFactory.CreateNew() for i in range(SIZE_ACTOR_POOL)]
 
 
+#print(actors)
+
 # memalloc
 qtt = 0
-for idRound in tqdm(range(10)): # NB_ROUNDS):
+for idRound in tqdm(range(1)): # NB_ROUNDS):
     for act in actors:
-        act.Produce(act.GetProductionCapacity())
+        qtt = act.GetProductionCapacity()
+        act.Produce(qtt)
     for act in actors:
         for elem in act.mCurrentRecipe.Inputs:
             qtt = act.mInventory.GetFreeSpace(elem.ResourceID)
+            price = randrange(9, 12)
+            qtt = min(qtt, max(int(act.mCapital / price), 0))
+            #print(qtt)
             if qtt > 0:
                 act.PostOrder_SingleMarket(act.CreateOrder(False, qtt, randrange(9, 12)), markets[elem.ResourceID])
         for elem in act.mCurrentRecipe.Outputs:
@@ -51,11 +59,13 @@ for idRound in tqdm(range(10)): # NB_ROUNDS):
     for idMarket in range(len(markets)):
         markets[idMarket].MatchOrders()
         markets[idMarket].ProcessResults(markets[idMarket].ComputeClearingPrice(), actors)
-        markets[idMarket].ClearTempData()
     for idActor in range(len(actors)):
         actors[idActor].ProcessOrderResults()
-        actors[idActor].ClearTempData()
+        #actors[idActor].ClearTempData()
+    for idMarket in range(len(markets)):
+        pass #markets[idMarket].ClearTempData()
 
+print(actors)
 
 
 '''

@@ -31,6 +31,9 @@ class ActorFactory(object):
         self.kRecipePicker = recipePicker
         self.kRangeCapital = rangeCapital
         self.mCurrentID = 0
+
+    def Reset(self):
+        self.mCurrentID = 0
     
     def CreateNew(self) -> Actor:
         """
